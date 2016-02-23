@@ -1,5 +1,6 @@
 #Project URL
 On [Heroku](mike-mail-merge.herokuapp.com)
+[Mike's Mail Merge]: http://mike-mail-merge.herokuapp.com
 
 # Mail Merge
 
