@@ -1,0 +1,25 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.capitalized {
+    text-transform: capitalize;
+}
+
+.close {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.close:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}

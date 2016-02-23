@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="centered">
+       <h1 class="text-center">Mail Merge</h1>
+    </div>
+  </div>
+</nav>
+<div class="container">
+<form class="form-horizontal" method="post">
+  <div class="row">
+    <div class="col-lg-6">
+      <p>Input names and emails, one per line, separated by commas.</p>
+    </div>
+    <div class="col-lg-6">
+      <p>Enter email subject/body below.  The following substitutions are valid:</p>
+          <ul>
+            <li>{first}</li>
+            <li>{last}</li>
+            <li>{email}</li>
+          </ul>
+    </div>
+  </div>
+    <br><br>
+  <div class="col-lg-6">
+      <div class="form-group">
+        <div class="col-lg-10">
+          <textarea class="form-control" rows="10" id="emailArea" placeholder="Names/Emails" name="emailName" autofocus>{% if initial.emailName %}{{ initial.emailName }}{% endif %}</textarea>
+        </div>
+      </div>
+  </div>
+  <div class="col-lg-6">
+      <fieldset>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="subject" placeholder="Subject" {% if initial.emailSubject %} value="{{ initial.emailSubject }}" {% endif %} name="emailSubject">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <textarea class="form-control" rows="7" id="bodyArea" placeholder="Body" name="emailBody">{% if initial.emailBody %}{{ initial.emailBody }}{% endif %}</textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <button type="submit" class="btn btn-primary text-right pull-right" id="preview">Preview</button>
+          </div>
+        </div>
+      </fieldset>
+  </div>
+</form>
+</div>
+<div class="container">
+    <div>
+      <div class="col-lg-12">
+      <h3 id="emailCount"></h3>
+      {% for email in emails %}
+      <div class="panel panel-primary" id="{{email.header}}">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>To:</strong> {{ email.header }}<span class="pull-right"><a class="close" href="" id="{{email.header}}">X</a></span></h3>
+          </div>
+          <div class="panel-body">
+            <strong>Subject:</strong> {{ email.subject }}
+            <br><br>
+            {{ email.body | safe }}
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}
