@@ -1,9 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var helpers = require('./utility');
-
-
-
+var express     = require('express');
+var router      = express.Router();
+var helpers     = require('./utility');
 
 
 router.get('/', function(req, res, next) {
